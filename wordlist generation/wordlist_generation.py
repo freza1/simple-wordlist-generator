@@ -22,13 +22,12 @@ for prefix in prefixes:
         for variation in variations:
             variation_str = ''.join(variation)
             password = prefix + variation_str
-            passwords_with_prefix.append(password)
+            # Check if the password length is 6 characters
+            if len(password) == total_length:
+                passwords_with_prefix.append(password)
 
 # Remove duplicates by converting the list to a set and back to a list
 unique_passwords = list(set(passwords_with_prefix))
-
-# Ensure all passwords have the correct length
-unique_passwords = [password for password in unique_passwords if len(password) == total_length]
 
 # Prompt the user for the file path to save the wordlist
 file_path = input("Enter the file path to save the wordlist (e.g., wordlist.txt): ")
